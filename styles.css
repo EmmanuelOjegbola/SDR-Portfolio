@@ -148,7 +148,7 @@ h1 em, .contact h2 em { font-family: Georgia, serif; font-weight: 400; }
 .contact-button:hover { background: var(--lime); color: var(--ink); transform: rotate(3deg); }
 .contact-button:hover b { background: var(--ink); color: var(--lime); }
 
-footer { height: 110px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 max(32px, calc((100vw - 1180px) / 2)); background: var(--cream); font-size: 12px; }
+footer { height: 110px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 max(160px, calc((100vw - 1180px) / 2)) 0 max(32px, calc((100vw - 1180px) / 2)); background: var(--cream); font-size: 12px; }
 footer p { margin: 0; color: rgba(23,53,45,.55); }
 .socials { display: flex; justify-content: end; gap: 24px; font-weight: 800; }
 .footer-brand { font-size: 14px; }
@@ -173,7 +173,7 @@ footer p { margin: 0; color: rgba(23,53,45,.55); }
   .process { grid-template-columns: 38% 62%; }
   .contact { padding-left: 20px; padding-right: 20px; }
   .contact-button { width: 220px; height: 220px; }
-  footer { padding-left: 20px; padding-right: 20px; }
+  footer { padding-left: 20px; padding-right: 150px; }
 }
 
 @media (max-width: 680px) {
@@ -206,7 +206,7 @@ footer p { margin: 0; color: rgba(23,53,45,.55); }
   .contact { align-items: flex-start; flex-direction: column; gap: 48px; padding-top: 78px; padding-bottom: 78px; }
   .contact h2 { font-size: 44px; }
   .contact-button { width: 190px; height: 190px; align-self: flex-end; }
-  footer { height: auto; grid-template-columns: 1fr auto; gap: 24px; padding-top: 28px; padding-bottom: 28px; }
+  footer { height: auto; grid-template-columns: 1fr auto; gap: 24px; padding: 28px 20px; }
   footer p { display: none; }
-  .socials { gap: 12px; }
+  .socials { grid-column: 1 / -1; justify-content: flex-start; gap: 12px; }
 }
