@@ -13,26 +13,18 @@ navLinks?.querySelectorAll("a").forEach((link) => {
   });
 });
 
-const counters = document.querySelectorAll(".count");
-const counterObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    const element = entry.target;
-    const target = Number(element.dataset.target);
-    const start = performance.now();
-    const duration = 1100;
+const cvDownload = document.querySelector(".cv-download");
+if (cvDownload) {
+  fetch(cvDownload.href, { method: "HEAD" })
+    .then((response) => {
+      const contentType = response.headers.get("content-type") || "";
+      if (response.ok && contentType.toLowerCase().includes("application/pdf")) {
+        cvDownload.hidden = false;
+      } else if (response.status !== 404) {
+        console.error("CV download is unavailable or is not served as a PDF.", response.status, contentType);
+      }
+    })
+    .catch((error) => console.error("Unable to check whether the CV PDF is available.", error));
+}
 
-    const update = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      element.textContent = Math.round(target * eased);
-      if (progress < 1) requestAnimationFrame(update);
-    };
-
-    requestAnimationFrame(update);
-    observer.unobserve(element);
-  });
-}, { threshold: 0.5 });
-
-counters.forEach((counter) => counterObserver.observe(counter));
 document.getElementById("year").textContent = new Date().getFullYear();
